@@ -178,7 +178,7 @@ else
   syn match   pythonFunction    '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'
-  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc,pythonFuncCall,pythonBracket,pythonBrace,pythonParen
+  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc,pythonFuncCall,pythonBracket,pythonBrace,pythonParen,pythonDot
 endif
 
 syn match   pythonDefine   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
