@@ -146,7 +146,7 @@ if s:Enabled('g:python_highlight_class_names')
   syn keyword pythonStatement     class nextgroup=pythonClassName skipwhite
   syn match   pythonClassName    '\%([[:upper:]][^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
 else
-  syn keyword pythonStatement     def class nextgroup=pythonFunction skipwhite
+  syn keyword pythonDefine     def class nextgroup=pythonFunction skipwhite
 endif
 
 
@@ -457,6 +457,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
   HiLink pythonRepeat           Repeat
   HiLink pythonException        Exception
   HiLink pythonOperator         Operator
+  HiLink pythonDefine           Define
 
   HiLink pythonFuncArgCommas    pythonNoise
   HiLink pythonBrackets         Delimiter
