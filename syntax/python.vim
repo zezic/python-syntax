@@ -178,7 +178,7 @@ else
   syn match   pythonFunction    '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'
-  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc,pythonFuncCall,pythonBracket,pythonBrace,pythonParen,pythonDot
+  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc,pythonFuncCall,pythonBracket,pythonBrace,pythonParen,pythonDot,pythonNone
 endif
 
 syn match   pythonDefine   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
@@ -188,11 +188,12 @@ syn keyword pythonDefine        def class nextgroup=pythonFunction skipwhite
 " Code blocks
 "
 
-syntax region  pythonBracket        matchgroup=pythonBrackets     start=/\[/ end=/\]/ contains=@pythonExpression extend
+syntax region  pythonBracket        matchgroup=pythonBrackets     start=/\[/ end=/\]/ contains=@pythonExpression,pythonListComma extend
 syntax region  pythonBrace          matchgroup=pythonBraces       start=/{/  end=/}/  contains=@pythonExpression,pythonDictColon,pythonDictComma extend
 syntax region  pythonParen          matchgroup=pythonParens       start=/(/  end=/)/  contains=@pythonExpression,pythonDictComma extend
 syntax match   pythonDictColon      contained /:/
 syntax match   pythonDictComma      contained /,/
+syntax match   pythonListComma      contained /,/
 
 "
 " Operators
@@ -467,6 +468,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
   HiLink pythonBraces           Delimiter
   HiLink pythonDictColon        pythonNoise
   HiLink pythonDictComma        pythonNoise
+  HiLink pythonListComma        pythonNoise
 
   HiLink pythonDecorator        Define
   HiLink pythonDottedName       Function
